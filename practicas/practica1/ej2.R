@@ -33,7 +33,7 @@ resultado <- lp.transport(cost.mat = costes,
                           row.signs = row.signs,
                           row.rhs = row.rhs,
                           col.signs = col.signs,
-                          col.rhs = col.rhs)
+                          col.rhs = col.rhs) 
 
 # Mostrar los resultados
 print(resultado)
