@@ -16,7 +16,7 @@ costes <- matrix(c(4, 6, 5, 9,
                    8, 7, 9, 4,
                    7, 8, 7, 6), nrow=3, byrow=TRUE)
 
-direction = "min"
+direction = "max"
 
 # Definir las capacidades de los almacenes
 row.signs <- rep("<=", 3)
