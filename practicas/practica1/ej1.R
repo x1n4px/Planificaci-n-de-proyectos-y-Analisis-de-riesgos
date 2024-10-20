@@ -38,7 +38,5 @@ optimo <- lp(direction = "max",
              const.dir = direccion,
              const.rhs = derecho)
 
-print("El beneficio máximo es de: ")
-optimo$objval    
-print("La solución óptima es: ")
-optimo$solution
+cat("El beneficio máximo es de: ", optimo$objval)    
+cat("La solución óptima es: ", optimo$solution)

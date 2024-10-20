@@ -37,9 +37,6 @@ direccion <- c("<=", "<=", "<=")
 # Solución óptima 
 
 optimo <- solveLP(objetivo,derecho, restricciones, maximum = TRUE, direccion)
-optimo$opt
-optimo$solution[1]
-optimo$solution[2]
 cat("Ganancia máxima: ", optimo$opt)
 cat("Cantidad de cajas del tipo A: ", optimo$solution[1])
 cat("Cantidad de cajas del tipo B: ", optimo$solution[2])
