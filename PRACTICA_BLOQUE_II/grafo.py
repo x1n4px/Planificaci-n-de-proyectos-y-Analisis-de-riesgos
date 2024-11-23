@@ -61,18 +61,10 @@ def generar_grafo_pert(relaciones, variables, archivo_salida='graph'):
     for origen, destino in relaciones:
         nodos_entrantes[destino] = True
     
-    # Nodo 1 será el primer nodo sin flechas entrantes
-    # Filtrar las variables que no están precedidas
+    # Nodo 1 será el primer nodo sin flechas entrantes o el primero de la lista
     nodos_sin_precedencia = [var for var, tiene_entrantes in nodos_entrantes.items() if not tiene_entrantes]
+    nodo_inicio = nodos_sin_precedencia[0] if nodos_sin_precedencia else variables[0]
 
-    # Asegurarse de que al menos un nodo sea de inicio
-    if not nodos_sin_precedencia:
-        print("¡Error! Todos los nodos tienen precedencia. Necesitamos al menos un nodo sin precedencia.")
-        return
-    
-    # El nodo inicial será el primero en esta lista de nodos sin precedencia
-    nodo_inicio = nodos_sin_precedencia[0]
-    
     # Crear nodo de inicio (nodo "1")
     dot.node(str(var_to_num[nodo_inicio]), label=str(var_to_num[nodo_inicio]))
     
@@ -95,6 +87,7 @@ def generar_grafo_pert(relaciones, variables, archivo_salida='graph'):
         # Agregar la arista con el label apropiado
         dot.edge(str(origen_num), str(destino_num), label=label, style=style)
 
+
         # Registrar la relación en el diccionario de precedencias
         precedencias[destino].append(origen)
     
@@ -114,7 +107,7 @@ def generar_grafo_pert(relaciones, variables, archivo_salida='graph'):
     
     # Eliminar nodos sin precedencia de la lista
     nodos_con_salientes_num = [var_to_num[var] for var in nodos_con_salientes]
-    print(nodos_con_salientes_num)
+    
     # Eliminar los nodos sin salientes
     for var in nodos_con_salientes:
         dot.node(str(var_to_num[var]), label=str(var_to_num[var]))
@@ -124,20 +117,20 @@ def generar_grafo_pert(relaciones, variables, archivo_salida='graph'):
 
     # Crear el nodo final con el número siguiente al último nodo
     if nodos_finales:
-        ultimo_numero = var_to_num[nodos_con_salientes[-1]]  # Último nodo en la secuencia
+        ultimo_numero = max(var_to_num.values())  # Número más alto existente
         nodo_final_num = ultimo_numero + 1  # Nodo final será el siguiente número
         dot.node(str(nodo_final_num), label=str(nodo_final_num))  # Crear nodo final
 
         # Conectar las variables finales al nuevo nodo final sin bucles
         for var in nodos_finales:
-            dot.edge(str(var_to_num[var]), str(nodo_final_num+1), label=var)  # Conectar sin bucles
+            dot.edge(str(var_to_num[var]), str(nodo_final_num), label=var)  # Conectar sin bucles
 
     # Renderizar el grafo
     dot.render(archivo_salida, format='png', cleanup=True)
     print(f"Grafo generado y guardado como {archivo_salida}.png")
 
 # Uso del programa
-archivo_excel = "input.xlsx"  # Cambia esto por la ruta de tu archivo Excel
+archivo_excel = "input2.xlsx"  # Cambia esto por la ruta de tu archivo Excel
 
 # Leer las relaciones de precedencia
 relaciones_precedencia, variables = leer_matriz_dependencias(archivo_excel)

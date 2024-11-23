@@ -48,13 +48,12 @@ def exportar_a_latex(datos, archivo_latex):
         f.write(tabla_latex)
 
 # Uso del programa
-archivo_excel = "input.xlsx"  # Cambia esto por la ruta de tu archivo Excel
+archivo_excel = "input2.xlsx"  # Cambia esto por la ruta de tu archivo Excel
 archivo_latex = "tabla.tex"  # Ruta del archivo de salida en LaTeX
 
 # Leer, procesar y exportar
 datos_procesados = leer_y_procesar_excel(archivo_excel)
 exportar_a_latex(datos_procesados, archivo_latex)
-
 # Mostrar la tabla en consola
 print("Tabla en formato LaTeX:")
 print(datos_procesados.to_latex(index=False, float_format="%.3f"))
