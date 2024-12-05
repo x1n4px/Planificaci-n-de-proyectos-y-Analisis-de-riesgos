@@ -1,8 +1,3 @@
-#!/bin/bash
+# Crear árboles de decisión
 
-
-### Para crear los arboles:
-
-```
 python arbol.py arbol_ej_4.json
-```
