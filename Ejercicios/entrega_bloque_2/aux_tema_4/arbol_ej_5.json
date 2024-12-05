@@ -1,0 +1,61 @@
+{
+    "Inicio": {
+        "prob": 1,
+        "ramas": {
+            "S1": {
+                "prob": 0.70,
+                "ramas": {
+                    "ES1|S1": {
+                        "prob": 0.90,
+                        "ramas": {
+                            "ES1,S1": {
+                                "prob": 0.63,
+                                "ramas": {
+                                    "S1/ES1": {"prob": 0.88, "ramas": {}}
+                                }
+                            }
+                        }
+                    },
+                    "ES2|S1": {
+                        "prob": 0.10,
+                        "ramas": {
+                            "ES2,S1": {
+                                "prob": 0.07,
+                                "ramas": {
+                                    "S1/ES2": {"prob": 0.12, "ramas": {}}
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "S2": {
+                "prob": 0.30,
+                "ramas": {
+                    "ES1|S2": {
+                        "prob": 0.30,
+                        "ramas": {
+                            "ES1,S2": {
+                                "prob": 0.09,
+                                "ramas": {
+                                    "S2/ES1": {"prob": 0.12, "ramas": {}}
+                                }
+                            }
+                        }
+                    },
+                    "ES2|S2": {
+                        "prob": 0.70,
+                        "ramas": {
+                            "ES2,S2": {
+                                "prob": 0.21,
+                                "ramas": {
+                                    "S2/ES2": {"prob": 0.75, "ramas": {}}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
